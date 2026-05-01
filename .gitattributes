@@ -1,0 +1,55 @@
+# Git LFS 配置 - Unreal Engine 项目
+# 将二进制资源文件通过 Git LFS 存储，避免仓库膨胀
+
+# 核心资源文件
+*.uasset filter=lfs diff=lfs merge=lfs -text
+*.umap   filter=lfs diff=lfs merge=lfs -text
+
+# 其他资源类型
+*.ubulk  filter=lfs diff=lfs merge=lfs -text
+*.ufont  filter=lfs diff=lfs merge=lfs -text
+
+# 纹理和渲染
+*.udsm   filter=lfs diff=lfs merge=lfs -text
+*.utex   filter=lfs diff=lfs merge=lfs -text
+
+# 动画和物理资产
+*.uanim  filter=lfs diff=lfs merge=lfs -text
+*.uskel  filter=lfs diff=lfs merge=lfs -text
+*.uphys  filter=lfs diff=lfs merge=lfs -text
+
+# 音频文件
+*.uwave  filter=lfs diff=lfs merge=lfs -text
+
+# 世界和关卡文件（就是 .umap，已包含在上方，但明确列出）
+# *.umap  filter=lfs diff=lfs merge=lfs -text
+
+# 可选：打包输出文件（如果需要在仓库中存储）
+# *.pak    filter=lfs diff=lfs merge=lfs -text
+
+# ============================================
+# 文本文件保持原样（自动检测换行符）
+# ============================================
+*   text=auto
+
+# 配置文件统一使用 LF 换行符（跨平台兼容）
+*.ini       text eol=lf
+*.json      text eol=lf
+*.xml       text eol=lf
+*.uproject  text eol=lf
+*.uplugin   text eol=lf
+*.cs        text eol=lf
+*.cpp       text eol=lf
+*.h         text eol=lf
+*.txt       text eol=lf
+
+# Shell 脚本必须使用 LF
+*.sh        text eol=lf
+
+# Windows 批处理文件使用 CRLF
+*.bat       text eol=crlf
+*.cmd       text eol=crlf
+*.ps1       text eol=crlf
+
+# 蓝图节点图（虽然是二进制，但建议走 LFS）
+*.ubt       filter=lfs diff=lfs merge=lfs -text
